@@ -13,7 +13,7 @@ body {
 
 #shortifyBlock {
 	margin: auto;
-	width: 700px;
+	width: 740px;
 	background: #ffffff;
 	box-shadow: 0 1px 5px #c6c6c6;
 	padding: 25px;
@@ -33,7 +33,7 @@ body {
 	padding: 0 5px;
 	width: 590px;
 	font-size: 16pt;
-	height: 25px;
+	height: 27px;
 }
 
 #shortifyButton {
@@ -85,4 +85,19 @@ p.shortifySuccess {
 	color: #4F8A10;
 	background-color: #DFF2BF;
 	font-size: 12pt;
+}
+
+.shortifyfooter {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #f5f5f5;
+}
+.container {
+	float: left;
+}
+
+body > .container {
+    padding: 60px 15px 0;
 }
