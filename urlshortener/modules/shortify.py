@@ -6,9 +6,9 @@ from django.shortcuts import render, get_object_or_404
 
 SHORTIFY_MAXLENGTH = 250
 
-logging.basicConfig(filename = "D:/shortify.log",
-                    level = logging.DEBUG,
-                    format = '%(asctime)s %(levelname)s %(name)s %(message)s')
+#logging.basicConfig(filename = "D:/shortify.log",
+#                    level = logging.DEBUG,
+#                     format = '%(asctime)s %(levelname)s %(name)s %(message)s')
 
 
 # Alphabet used in _url_id_encode.
