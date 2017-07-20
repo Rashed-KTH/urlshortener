@@ -17,7 +17,7 @@ SHORTIFY_MAXLENGTH = 250
 
 ALPHABET = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 ALPHABET_LENGTH = len(ALPHABET)
-SHORTIFY_ADDRESS = "http://127.0.0.1:8000/"
+SHORTIFY_ADDRESS = "http://rashed123.pythonanywhere.com/"
 
 def url_shortener(url):
     """
