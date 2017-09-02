@@ -5,6 +5,30 @@ import json
 from urlshortener.modules.shortify import url_shortener
 from urlshortener.models import Urlshort
 
+from django.contrib.auth.models import User, Group
+from rest_framework import viewsets
+import requests
+from urlshortener.modules.serializers import UserSerializer, UrlshortSerializer
+
+TEMPARATURE_ENDPOINT = "https://api.darksky.net/forecast/310c1407438ae52c7be84b723c6af2ba/59.4024,17.9465"
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = UserSerializer
+
+
+class UrlshortViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows shorten url to be viewed or edited.
+    """
+    queryset = Urlshort.objects.all()
+    serializer_class = UrlshortSerializer
+    
+
 def index(request):
 	"""
 	Entry page of the application.
@@ -22,7 +46,11 @@ def index(request):
 		return HttpResponse(json.dumps(json_response),
             content_type='application/json')
 
-	return render(request, 'urlshortener/index.html', {})
+	response = requests.get(TEMPARATURE_ENDPOINT)
+	json_response = response.json()
+	temp_far = float(json_response["currently"]["temperature"])
+	temp_cel = int(((temp_far - 32)*5) / 9)
+	return render(request, 'urlshortener/index.html', {"current_temp":temp_cel})
 
 def test(request):
 	"""
@@ -44,3 +72,4 @@ def page_redirect(request, hash_value):
 			return redirect(url_obj.url)
 	except:
 		return render(request, 'urlshortener/opps.html', {})
+
