@@ -1,18 +1,19 @@
+import json
+import re
+import requests
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
-import re
-import json
+from django.contrib.auth.models import User, Group
+
+from rest_framework import viewsets
+
 from urlshortener.modules.shortify import url_shortener
 from urlshortener.models import Urlshort
-
-from django.contrib.auth.models import User, Group
-from rest_framework import viewsets
-import requests
 from urlshortener.modules.serializers import UserSerializer, UrlshortSerializer
 
 # Api end point to get the current temparature of kista
 TEMPARATURE_ENDPOINT = "https://api.darksky.net/forecast/310c1407438ae52c7be84b723c6af2ba/59.4024,17.9465"
-
 
 class UserViewSet(viewsets.ModelViewSet):
     """

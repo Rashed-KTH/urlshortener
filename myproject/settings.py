@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'urlshortener'
 ]
 
-# Only a admin user can access our API
+# Only an admin user can access the API
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAdminUser',
