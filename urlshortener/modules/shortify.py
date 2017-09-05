@@ -84,13 +84,13 @@ def _create_url_hash(url):
 
     """
     try:
-        url_obj = Urlshort.objects.create(hash_value="", url="")
+        url_obj = Urlshort.objects.create(hash_value="", original_url="")
         url_obj.save()
         url_obj = Urlshort.objects.latest("id")
 
         url_hash = _url_id_encode(url_obj.id)
         url_encoded = url.encode("utf8")
-        Urlshort.objects.filter(id=url_obj.id).update(hash_value=url_hash, url=url_encoded)
+        Urlshort.objects.filter(id=url_obj.id).update(hash_value=url_hash, original_url=url_encoded)
     except :
         raise 
     
@@ -105,7 +105,7 @@ def _url_id_encode(number):
 
     """
     if (number >= 0 and number < ALPHABET_LENGTH):
-        hash_value = _generate_hash(length=4)
+        hash_value = _generate_hash(length=10)
         return ALPHABET[number] + hash_value
 
     encoded = ""

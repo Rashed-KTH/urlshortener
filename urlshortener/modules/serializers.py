@@ -12,4 +12,4 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 class UrlshortSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Urlshort
-        fields = ('url', 'hash_value')
+        fields = ('original_url', 'hash_value')

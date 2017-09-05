@@ -10,6 +10,7 @@ from rest_framework import viewsets
 import requests
 from urlshortener.modules.serializers import UserSerializer, UrlshortSerializer
 
+# Api end point to get the current temparature of kista
 TEMPARATURE_ENDPOINT = "https://api.darksky.net/forecast/310c1407438ae52c7be84b723c6af2ba/59.4024,17.9465"
 
 
@@ -46,6 +47,7 @@ def index(request):
 		return HttpResponse(json.dumps(json_response),
             content_type='application/json')
 
+	# Api integration for temparature at kista
 	response = requests.get(TEMPARATURE_ENDPOINT)
 	json_response = response.json()
 	temp_far = float(json_response["currently"]["temperature"])
