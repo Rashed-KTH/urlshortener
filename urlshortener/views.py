@@ -71,8 +71,8 @@ def page_redirect(request, hash_value):
 	#url_obj = get_object_or_404(Urlshort,hash_value=hash_value) #django default page not found
 	try:
 		url_obj = Urlshort.objects.get(hash_value=hash_value)
-		if url_obj.url:
-			return redirect(url_obj.url)
+		if url_obj.original_url:
+			return redirect(url_obj.original_url)
 	except:
 		return render(request, 'urlshortener/opps.html', {})
 
